@@ -1,4 +1,5 @@
 from types import ModuleType
+import pytest
 
 
 def test_to_roman(impl: ModuleType):
@@ -14,6 +15,8 @@ def test_to_roman(impl: ModuleType):
     assert impl.to_roman(3999) == "MMCMXCIX"
     
     # Invalid calls 
-    #impl.to_roman(4001)
-    #impl.to_roman(0)
+    with pytest.raises(ValueError):
+        impl.to_roman(4001)
+    with pytest.raises(ValueError):
+        impl.to_roman(0)
     
